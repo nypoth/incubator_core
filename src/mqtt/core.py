@@ -35,3 +35,6 @@ class MqttConnector:
 
     def on_message(self, client, userdata, msg):
         self.logger.info(msg.payload.decode())
+
+    def publish(self, topic, payload=None, qos=0, retain=False, properties=None):
+        self._client.publish(topic, payload, qos, retain, properties)
